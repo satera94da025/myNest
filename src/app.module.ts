@@ -1,15 +1,19 @@
-import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
-// import { TypeOrmModule } from '@nestjs/typeorm';
+import { Module } from "@nestjs/common";
+import { MongooseModule } from "@nestjs/mongoose";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { UsersModule } from "./users/users.module";
+
+
+const uri = "mongodb://AlexD:Satera94da025@nestcluster.9lnbn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 @Module({
   imports: [
     UsersModule,
     MongooseModule.forRoot(
-      'mongodb+srv://Alex:Satera94da025@cluster0.d70y5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+
+      uri,
+      // {useUnifiedTopology: false,useNewUrlParser: false, }
     ),
     // MongooseModule.forRoot('jdbc:mysql://myUser:123Password@localhost:3306/mySchema'),
   ],
